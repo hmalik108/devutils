@@ -88,7 +88,7 @@ export default function HtmlFormatterTool() {
             </>
           }
         >
-          <CodeEditor value={input} onChange={setInput} language="html" label="Input HTML" placeholder="Paste HTML…" minHeight={340} invalid={status?.kind === "error"} />
+          <CodeEditor value={input} onChange={setInput} language="html" label="Input HTML" placeholder="Paste HTML…" minHeight={520} invalid={status?.kind === "error"} />
         </ToolPanel>
         <ToolPanel
           title="Output"
@@ -99,7 +99,7 @@ export default function HtmlFormatterTool() {
             </>
           }
         >
-          <CodeEditor value={output} language="html" readOnly label="Output HTML" placeholder="Result appears here" minHeight={340} />
+          <CodeEditor value={output} language="html" readOnly label="Output HTML" placeholder="Result appears here" minHeight={520} />
         </ToolPanel>
       </div>
     </div>

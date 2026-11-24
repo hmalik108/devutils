@@ -88,7 +88,7 @@ export default function JsonYamlTreeTool() {
             </>
           }
         >
-          <CodeEditor value={input} onChange={setInput} language={input.trimStart().startsWith("{") || input.trimStart().startsWith("[") ? "json" : "yaml"} label="JSON or YAML input" placeholder="Paste JSON or YAML…" invalid={result?.ok === false} minHeight={360} />
+          <CodeEditor value={input} onChange={setInput} language={input.trimStart().startsWith("{") || input.trimStart().startsWith("[") ? "json" : "yaml"} label="JSON or YAML input" placeholder="Paste JSON or YAML…" invalid={result?.ok === false} minHeight={520} />
         </ToolPanel>
         <ToolPanel
           title="Tree"
@@ -111,7 +111,7 @@ export default function JsonYamlTreeTool() {
           <pre
             tabIndex={0}
             aria-label="Tree output"
-            className="min-h-[360px] max-h-[600px] overflow-auto rounded-md border bg-muted/40 p-3 font-mono text-[13px] leading-relaxed"
+            className="min-h-[520px] max-h-[820px] overflow-auto rounded-md border bg-muted/40 p-3 font-mono text-[13px] leading-relaxed"
           >
             {tree || <span className="text-muted-foreground">The tree appears here as you type.</span>}
           </pre>

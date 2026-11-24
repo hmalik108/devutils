@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, Lock, Zap, UserX } from "lucide-react";
-import { activeCategories, featuredTools, recentlyAdded, toolsInCategory, liveTools } from "@/lib/tools-registry";
+import { activeCategories, featuredTools, toolsInCategory, liveTools } from "@/lib/tools-registry";
 import { pageMetadata, websiteJsonLd } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 import { ToolCard } from "@/components/tools/tool-card";
@@ -16,7 +16,6 @@ export const metadata = pageMetadata({
 
 export default function HomePage() {
   const featured = featuredTools();
-  const recent = recentlyAdded(6);
   const count = liveTools().length;
   return (
     <>
@@ -45,7 +44,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <section aria-labelledby="featured" className="mt-14">
           <div className="flex items-end justify-between">
             <h2 id="featured" className="text-2xl font-semibold tracking-tight">
@@ -78,7 +77,7 @@ export default function HomePage() {
                     <span className="flex items-center gap-3">
                       <Icon aria-hidden className="size-5 text-primary" />
                       <span className="font-semibold">{c.name}</span>
-                      <span className="ml-auto text-xs text-muted-foreground">{items.length} tools</span>
+                      <span className="ml-auto text-xs text-muted-foreground">{items.length} {items.length === 1 ? "tool" : "tools"}</span>
                     </span>
                     <span className="mt-2 text-sm text-muted-foreground">{c.description}</span>
                     <span className="mt-3 text-xs text-muted-foreground">{items.map((t) => t.name).join(" · ")}</span>
@@ -86,25 +85,6 @@ export default function HomePage() {
                 </li>
               );
             })}
-          </ul>
-        </section>
-
-        <section aria-labelledby="recent" className="mt-16">
-          <h2 id="recent" className="text-2xl font-semibold tracking-tight">
-            Recently added
-          </h2>
-          <ul className="mt-6 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
-            {recent.map((t) => (
-              <li key={t.slug}>
-                <Link href={`/${t.slug}`} className="group flex items-center gap-2 text-sm">
-                  <t.icon aria-hidden className="size-4 text-muted-foreground" />
-                  <span className="font-medium group-hover:text-primary">{t.name}</span>
-                  <time dateTime={t.addedAt} className="ml-auto text-xs text-muted-foreground">
-                    {new Date(t.addedAt + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}
-                  </time>
-                </Link>
-              </li>
-            ))}
           </ul>
         </section>
 

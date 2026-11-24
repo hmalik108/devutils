@@ -1,8 +1,8 @@
 /**
  * Central tool registry — the single source of truth for tool metadata.
  *
- * Drives: homepage, /tools directory, category pages, search, related tools,
- * page metadata/structured data, the sitemap and static route generation.
+ * Drives: homepage, /tools directory, category pages, guides, search, related
+ * tools, page metadata/structured data, the sitemap and static route generation.
  *
  * Adding a tool:
  *   1. Add an entry to `tools` below (status "planned" until it is finished).
@@ -58,7 +58,7 @@ export interface Tool {
   icon: LucideIcon;
   status: ToolStatus;
   featured?: boolean;
-  /** ISO date the tool went live. Used for "recently added" — real data only. */
+  /** ISO date the tool went live (used for sitemap lastModified). */
   addedAt: string;
   /** Hand-picked related tools; padded with same-category tools automatically. */
   related: string[];
@@ -290,10 +290,6 @@ export function activeCategories(): Category[] {
 
 export function featuredTools(): Tool[] {
   return liveTools().filter((t) => t.featured);
-}
-
-export function recentlyAdded(limit = 6): Tool[] {
-  return [...liveTools()].sort((a, b) => b.addedAt.localeCompare(a.addedAt)).slice(0, limit);
 }
 
 export function relatedTools(slug: string, limit = 4): Tool[] {

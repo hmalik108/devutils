@@ -41,7 +41,7 @@ Copy `.env.example` to `.env.local` to set the site URL or turn on analytics.
 | DevOps `/devops` | Cron Expression Generator | `/cron-generator` |
 | | YAML Formatter / Validator | `/yaml-formatter` |
 
-Other routes: `/`, `/tools` (searchable directory, `?q=` and `?category=`), `/categories`, `/about`, `/contact`, `/privacy-policy`, `/terms`, `/sitemap.xml`, `/robots.txt`. `/json-validator` redirects (308) to `/json-formatter`.
+Other routes: `/`, `/tools` (searchable directory, `?q=` and `?category=`), `/categories`, `/guides` and `/guides/<tool-slug>` (how-to, examples and FAQ for each tool), `/about`, `/contact`, `/privacy-policy`, `/terms`, `/sitemap.xml`, `/robots.txt`. `/json-validator` redirects (308) to `/json-formatter`.
 
 ## Project structure
 
@@ -50,6 +50,7 @@ app/
   layout.tsx              Root layout: fonts, theme provider, header/footer, optional analytics script
   page.tsx                Homepage (search, featured, categories, recently added, privacy note)
   [slug]/page.tsx         Tool pages AND category pages, statically generated from the registry
+  guides/                 Guide index + one guide page per tool (long-form content)
   tools/ categories/      Directory + category index
   about/ contact/ privacy-policy/ terms/
   sitemap.ts robots.ts    Generated from the registry
@@ -65,7 +66,7 @@ components/
 features/                 Pure processing logic, no React. Unit tested.
   json/ encoding/ security/ code/ datetime/ devops/
   *.worker.ts             Web Workers (JSON on large input, regex always)
-content/tools/            Per-tool supporting content: intro, how-to, examples, FAQ, notes
+content/tools/            Per-tool guide content (intro, how-to, examples, FAQ), shown on /guides/<slug>; the tool page shows only its privacy note
 lib/
   tools-registry.ts       ★ Single source of truth for tool metadata
   seo.ts                  Metadata + structured-data builders
@@ -82,7 +83,7 @@ tests/
 
 `lib/tools-registry.ts` holds every tool's slug, name, category, descriptions, SEO title and meta description, keywords, icon, status, `featured`, `addedAt` and related tools. Everything below reads from it, so no tool metadata is repeated anywhere else:
 
-- homepage sections, `/tools`, `/categories` and category pages
+- homepage sections, `/tools`, `/categories`, category pages and `/guides`
 - search (`searchTools`, ranked by name, then keyword, then description) and related tools (`relatedTools`)
 - `generateStaticParams`, `generateMetadata`, canonical URLs, Open Graph and JSON-LD
 - `sitemap.xml`

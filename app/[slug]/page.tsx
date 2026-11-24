@@ -50,7 +50,7 @@ export default async function SlugPage({ params }: Props) {
     const Icon = cat.icon;
     const others = categories.filter((c) => c.slug !== cat.slug && toolsInCategory(c.slug).length > 0);
     return (
-      <div className="mx-auto max-w-6xl px-4 py-8">
+      <div className="mx-auto max-w-7xl px-4 py-8">
         <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Categories", path: "/categories" }, { name: cat.name, path: `/${cat.slug}` }]} />
         <header className="mt-4">
           <h1 className="flex items-center gap-3 text-3xl font-bold tracking-tight">

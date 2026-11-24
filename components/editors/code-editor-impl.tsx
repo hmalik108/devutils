@@ -28,7 +28,7 @@ const baseTheme = EditorView.theme({
   ".cm-activeLineGutter": { backgroundColor: "transparent" },
 });
 
-export default function CodeEditorImpl({ value, onChange, language = "text", readOnly, label, minHeight = 240, maxHeight = 520, placeholder, invalid, id }: CodeEditorProps) {
+export default function CodeEditorImpl({ value, onChange, language = "text", readOnly, label, minHeight = 240, maxHeight = 820, placeholder, invalid, id }: CodeEditorProps) {
   const host = useRef<HTMLDivElement>(null);
   const view = useRef<EditorView | null>(null);
   const onChangeRef = useRef(onChange);

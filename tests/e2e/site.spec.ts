@@ -43,7 +43,7 @@ test.describe("navigation", () => {
 
   test("related tools link to other tools", async ({ page }) => {
     await page.goto("/json-formatter");
-    const related = page.getByRole("complementary").getByRole("link").first();
+    const related = page.getByRole("region", { name: "Related tools" }).getByRole("link").first();
     const href = await related.getAttribute("href");
     await related.click();
     await expect(page).toHaveURL(new RegExp(`${href}$`));
@@ -77,9 +77,32 @@ test.describe("every tool page", () => {
       await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", tool.seoDescription);
       await expect(page.locator('meta[property="og:title"]')).toHaveCount(1);
       await expect(page.getByRole("navigation", { name: "Breadcrumb" })).toBeVisible();
-      await expect(page.getByRole("heading", { name: "Frequently asked questions" })).toBeVisible();
+      await expect(page.getByRole("heading", { name: "Privacy" })).toBeVisible();
+      await expect(page.getByRole("region", { name: "Related tools" }).getByRole("link").first()).toBeVisible();
+      // Long-form help lives on the guide page, not the tool page.
+      await expect(page.getByRole("heading", { name: "Frequently asked questions" })).toHaveCount(0);
+      await expect(page.getByRole("link", { name: /Guide, examples/ })).toHaveAttribute("href", `/guides/${tool.slug}`);
       await page.waitForLoadState("networkidle");
       expect(errors).toEqual([]);
+    });
+  }
+});
+
+test.describe("guides", () => {
+  test("guide index links to every tool guide", async ({ page }) => {
+    await page.goto("/guides");
+    for (const t of liveTools()) await expect(page.getByRole("link", { name: `${t.name} guide` })).toHaveAttribute("href", `/guides/${t.slug}`);
+  });
+
+  for (const tool of liveTools()) {
+    test(`guide for ${tool.slug} has instructions, examples and FAQ`, async ({ page }) => {
+      const res = await page.goto(`/guides/${tool.slug}`);
+      expect(res?.status()).toBe(200);
+      await expect(page.getByRole("heading", { level: 1 })).toHaveText(`${tool.name} guide`);
+      for (const h of ["How to use", "Examples", "Frequently asked questions"]) await expect(page.getByRole("heading", { name: h, exact: true })).toBeVisible();
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", new RegExp(`/guides/${tool.slug}$`));
+      await page.getByRole("link", { name: `Open the ${tool.name}` }).click();
+      await expect(page).toHaveURL(new RegExp(`/${tool.slug}$`));
     });
   }
 });
@@ -259,7 +282,10 @@ test("sitemap and robots are available", async ({ request }) => {
   const sitemap = await request.get("/sitemap.xml");
   expect(sitemap.ok()).toBe(true);
   const xml = await sitemap.text();
-  for (const t of liveTools()) expect(xml).toContain(`/${t.slug}</loc>`);
+  for (const t of liveTools()) {
+    expect(xml).toContain(`/${t.slug}</loc>`);
+    expect(xml).toContain(`/guides/${t.slug}</loc>`);
+  }
   const robots = await request.get("/robots.txt");
   expect(await robots.text()).toContain("Sitemap:");
 });

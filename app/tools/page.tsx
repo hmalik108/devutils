@@ -13,7 +13,7 @@ export const metadata = pageMetadata({
 
 export default function ToolsPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8">
+    <div className="mx-auto max-w-7xl px-4 py-8">
       <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Tools", path: "/tools" }]} />
       <h1 className="mt-4 text-3xl font-bold tracking-tight">All developer tools</h1>
       <p className="mt-2 max-w-2xl text-muted-foreground">Every tool is free, needs no account and processes your input locally in the browser.</p>

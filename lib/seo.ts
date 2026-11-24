@@ -36,6 +36,14 @@ export function toolMetadata(tool: Tool): Metadata {
   return pageMetadata({ title: tool.seoTitle, description: tool.seoDescription, path: `/${tool.slug}` });
 }
 
+export function guideMetadata(tool: Tool): Metadata {
+  return pageMetadata({
+    title: `${tool.name} Guide — How to Use, Examples & FAQ`,
+    description: `How to use the ${tool.name} on devutils.info: step-by-step instructions, worked examples, background and answers to common questions.`,
+    path: `/guides/${tool.slug}`,
+  });
+}
+
 export function categoryMetadata(category: Category): Metadata {
   return pageMetadata({
     title: `${category.name} — Free Online ${category.name}`,
@@ -93,6 +101,14 @@ export function softwareApplicationJsonLd(tool: Tool) {
     // The tool is genuinely free; this is the only "pricing" stated, and it is visible on the page.
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   };
+}
+
+export function guideBreadcrumbs(tool: Tool): Crumb[] {
+  return [
+    { name: "Home", path: "/" },
+    { name: "Guides", path: "/guides" },
+    { name: tool.name, path: `/guides/${tool.slug}` },
+  ];
 }
 
 export function toolBreadcrumbs(tool: Tool): Crumb[] {

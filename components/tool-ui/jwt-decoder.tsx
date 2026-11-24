@@ -70,7 +70,7 @@ export default function JwtDecoderTool() {
           value={token}
           onChange={(e) => setToken(e.target.value)}
           placeholder="eyJhbGciOi… (paste a JWT; a 'Bearer ' prefix is fine)"
-          className="min-h-28 break-all"
+          className="min-h-40 break-all"
           aria-invalid={result?.ok === false}
         />
       </ToolPanel>
@@ -95,7 +95,7 @@ export default function JwtDecoderTool() {
 
           <div className="grid gap-4 lg:grid-cols-2">
             <ToolPanel title="Header" actions={<CopyButton value={headerJson} tool={TOOL} label="Copy header" />}>
-              <pre tabIndex={0} className="max-h-80 overflow-auto rounded-md border bg-muted/40 p-3 font-mono text-[13px]">{headerJson}</pre>
+              <pre tabIndex={0} className="min-h-48 max-h-[560px] overflow-auto rounded-md border bg-muted/40 p-3 font-mono text-[13px]">{headerJson}</pre>
               {alg && (
                 <p className="text-xs text-muted-foreground">
                   Algorithm: <Badge variant="outline">{alg}</Badge>
@@ -103,7 +103,7 @@ export default function JwtDecoderTool() {
               )}
             </ToolPanel>
             <ToolPanel title="Payload (claims)" actions={<CopyButton value={payloadJson} tool={TOOL} label="Copy payload" />}>
-              <pre tabIndex={0} className="max-h-80 overflow-auto rounded-md border bg-muted/40 p-3 font-mono text-[13px]">{payloadJson}</pre>
+              <pre tabIndex={0} className="min-h-48 max-h-[560px] overflow-auto rounded-md border bg-muted/40 p-3 font-mono text-[13px]">{payloadJson}</pre>
             </ToolPanel>
           </div>
 

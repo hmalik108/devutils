@@ -166,10 +166,10 @@ export default function RegexTesterTool() {
             </Button>
           }
         >
-          <Textarea id={`${id}-text`} value={text} onChange={(e) => setText(e.target.value)} className="min-h-56" placeholder="Text to test against…" />
+          <Textarea id={`${id}-text`} value={text} onChange={(e) => setText(e.target.value)} className="min-h-[400px]" placeholder="Text to test against…" />
         </ToolPanel>
         <ToolPanel title="Highlighted matches">
-          <pre tabIndex={0} aria-label="Test text with matches highlighted" className="min-h-56 max-h-[420px] overflow-auto rounded-md border bg-muted/40 p-3 font-mono text-[13px] leading-relaxed whitespace-pre-wrap break-words">
+          <pre tabIndex={0} aria-label="Test text with matches highlighted" className="min-h-[400px] max-h-[640px] overflow-auto rounded-md border bg-muted/40 p-3 font-mono text-[13px] leading-relaxed whitespace-pre-wrap break-words">
             {segments
               ? segments.map((s, i) =>
                   s.match === undefined ? (

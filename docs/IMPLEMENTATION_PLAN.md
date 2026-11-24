@@ -65,6 +65,12 @@ For each tool: write the logic in `features/`, then unit tests, then the UI, the
 - [ ] Measure field Core Web Vitals after launch (LCP ≤ 2.5 s, INP ≤ 200 ms, CLS ≤ 0.1 at p75).
 - [ ] Write guides for `content/guides/` (PRD §10.4). Shorter versions of these topics are already on each tool page.
 
+## Phase 6 — Post-launch layout changes ✅
+
+- ✅ Tool pages focus on the tool: wider layout (`max-w-7xl`) and larger input/output areas, then a privacy note and related tools as a horizontal row of cards.
+- ✅ Long-form help (about, how-to, examples, FAQ) moved to `/guides/<slug>` and is linked from each tool page. `/guides` lists every guide, and all guides are in the sitemap.
+- ✅ Removed the homepage's "Recently added" section.
+
 ## Deviations from the PRD
 
 | PRD | Decision | Why |
@@ -74,4 +80,5 @@ For each tool: write the logic in `features/`, then unit tests, then the UI, the
 | §5.3 draws tools nested under categories | Tools use flat URLs such as `/json-formatter`; categories are at `/json-tools` and so on | §7 gives every tool a flat URL, and §9.6 matches. |
 | §5.3 doesn't place UUID or the Tree Visualizer | UUID goes under Code Tools; Tree under JSON Tools | Closest fit (the PRD gives "generate test identifiers" as a QA task). |
 | §9.2 lists "advertising components" | Not created | Excluded by the out-of-scope and no-monetization instruction. The architecture leaves room to add them later. |
+| §6.3 and §10.1 put instructions, examples and FAQ on each tool page | They're on a linked `/guides/<slug>` page; the tool page keeps the tool, privacy note and related tools | Owner's decision after launch: the tools should explain themselves through their design. |
 | CSP | `script-src 'unsafe-inline'` | Statically generated pages can't use per-request nonces. Everything else is locked to `'self'`. |

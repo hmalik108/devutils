@@ -88,7 +88,7 @@ export default function HashGeneratorTool() {
             </Button>
           }
         >
-          <Textarea id={`${id}-text`} value={text} onChange={(e) => setText(e.target.value)} placeholder="Type or paste text… (an empty input is hashed too)" className="min-h-32" />
+          <Textarea id={`${id}-text`} value={text} onChange={(e) => setText(e.target.value)} placeholder="Type or paste text… (an empty input is hashed too)" className="min-h-56" />
         </ToolPanel>
       ) : (
         <ToolPanel title="File to hash" htmlFor={`${id}-file`}>

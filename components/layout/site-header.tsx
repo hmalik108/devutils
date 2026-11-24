@@ -8,7 +8,7 @@ import { SearchDialog } from "@/components/navigation/search-dialog";
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
-      <div className="relative mx-auto flex h-14 max-w-6xl items-center gap-4 px-4">
+      <div className="relative mx-auto flex h-14 max-w-7xl items-center gap-4 px-4">
         <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight" aria-label="devutils.info home">
           <span className="grid size-7 place-items-center rounded-md bg-primary text-primary-foreground">
             <Wrench aria-hidden className="size-4" />

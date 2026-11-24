@@ -99,11 +99,11 @@ export default function JsonDiffTool() {
 
       <div className="grid gap-4 lg:grid-cols-2">
         <ToolPanel title="Original JSON (left)">
-          <CodeEditor value={left} onChange={setLeft} language="json" label="Original JSON" placeholder="Paste the original JSON…" invalid={!!errors.left} minHeight={260} />
+          <CodeEditor value={left} onChange={setLeft} language="json" label="Original JSON" placeholder="Paste the original JSON…" invalid={!!errors.left} minHeight={420} />
           {errors.left && <StatusMessage kind="error" title="Left JSON is invalid">{errors.left}</StatusMessage>}
         </ToolPanel>
         <ToolPanel title="Modified JSON (right)">
-          <CodeEditor value={right} onChange={setRight} language="json" label="Modified JSON" placeholder="Paste the modified JSON…" invalid={!!errors.right} minHeight={260} />
+          <CodeEditor value={right} onChange={setRight} language="json" label="Modified JSON" placeholder="Paste the modified JSON…" invalid={!!errors.right} minHeight={420} />
           {errors.right && <StatusMessage kind="error" title="Right JSON is invalid">{errors.right}</StatusMessage>}
         </ToolPanel>
       </div>

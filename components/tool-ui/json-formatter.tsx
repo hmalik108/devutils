@@ -120,7 +120,7 @@ export default function JsonFormatterTool() {
             </>
           }
         >
-          <CodeEditor value={input} onChange={setInput} language="json" label="Input JSON" placeholder="Paste JSON here…" invalid={status?.kind === "error"} minHeight={320} />
+          <CodeEditor value={input} onChange={setInput} language="json" label="Input JSON" placeholder="Paste JSON here…" invalid={status?.kind === "error"} minHeight={520} />
         </ToolPanel>
         <ToolPanel
           title="Output"
@@ -131,7 +131,7 @@ export default function JsonFormatterTool() {
             </>
           }
         >
-          <CodeEditor value={output} language="json" readOnly label="Output JSON" placeholder="Result appears here" minHeight={320} />
+          <CodeEditor value={output} language="json" readOnly label="Output JSON" placeholder="Result appears here" minHeight={520} />
         </ToolPanel>
       </div>
     </div>

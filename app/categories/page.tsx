@@ -11,7 +11,7 @@ export const metadata = pageMetadata({
 
 export default function CategoriesPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8">
+    <div className="mx-auto max-w-7xl px-4 py-8">
       <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Categories", path: "/categories" }]} />
       <h1 className="mt-4 text-3xl font-bold tracking-tight">Tool categories</h1>
       <ul className="mt-8 grid gap-6 md:grid-cols-2">

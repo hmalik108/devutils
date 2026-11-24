@@ -45,7 +45,7 @@ export function TextTransform({ tool, input, setInput, output, error, inputLabel
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder={placeholder}
-          className="min-h-56"
+          className="min-h-[400px]"
           aria-invalid={!!error}
           aria-describedby={error ? `${id}-err` : undefined}
         />
@@ -64,7 +64,7 @@ export function TextTransform({ tool, input, setInput, output, error, inputLabel
           </>
         }
       >
-        <Textarea id={`${id}-out`} value={output} readOnly className="min-h-56 bg-muted/40" placeholder="Result appears here" />
+        <Textarea id={`${id}-out`} value={output} readOnly className="min-h-[400px] bg-muted/40" placeholder="Result appears here" />
         {error && (
           <StatusMessage kind="error" title={error} id={`${id}-err`} />
         )}

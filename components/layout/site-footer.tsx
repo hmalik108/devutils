@@ -5,7 +5,7 @@ import { siteConfig } from "@/lib/site";
 export function SiteFooter() {
   return (
     <footer className="mt-24 border-t bg-muted/40">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <p className="font-semibold">{siteConfig.name}</p>
           <p className="mt-2 text-sm text-muted-foreground">{siteConfig.tagline} Free tools that run in your browser — your input never leaves your device.</p>
@@ -27,6 +27,7 @@ export function SiteFooter() {
           <ul className="mt-3 space-y-2 text-sm">
             {[
               ["/tools", "All tools"],
+              ["/guides", "Guides"],
               ["/about", "About"],
               ["/contact", "Contact"],
             ].map(([href, label]) => (

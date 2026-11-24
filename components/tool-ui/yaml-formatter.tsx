@@ -133,7 +133,7 @@ export default function YamlFormatterTool() {
             </>
           }
         >
-          <CodeEditor value={input} onChange={setInput} language="yaml" label="Input YAML" placeholder="Paste YAML…" minHeight={360} invalid={status?.kind === "error"} />
+          <CodeEditor value={input} onChange={setInput} language="yaml" label="Input YAML" placeholder="Paste YAML…" minHeight={520} invalid={status?.kind === "error"} />
         </ToolPanel>
         <ToolPanel
           title="Formatted YAML"
@@ -144,7 +144,7 @@ export default function YamlFormatterTool() {
             </>
           }
         >
-          <CodeEditor value={output} language="yaml" readOnly label="Formatted YAML" placeholder="Result appears here" minHeight={360} />
+          <CodeEditor value={output} language="yaml" readOnly label="Formatted YAML" placeholder="Result appears here" minHeight={520} />
         </ToolPanel>
       </div>
     </div>
