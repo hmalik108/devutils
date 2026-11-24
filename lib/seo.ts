@@ -10,11 +10,17 @@ interface PageMetaInput {
   index?: boolean;
   /** Use the title as-is instead of appending the site name. */
   absoluteTitle?: boolean;
+  /**
+   * Open Graph image path. Defaults to the site-wide image (app/opengraph-image.tsx).
+   * Tool and category pages use their own (app/[slug]/opengraph-image.tsx).
+   */
+  image?: string;
 }
 
-export function pageMetadata({ title, description, path, index = true, absoluteTitle }: PageMetaInput): Metadata {
+export function pageMetadata({ title, description, path, index = true, absoluteTitle, image = "/opengraph-image" }: PageMetaInput): Metadata {
   const url = absoluteUrl(path);
   const fullTitle = absoluteTitle ? title : `${title} | ${siteConfig.name}`;
+  const images = [{ url: image, width: 1200, height: 630, alt: fullTitle }];
   return {
     title: { absolute: fullTitle },
     description,
@@ -27,13 +33,14 @@ export function pageMetadata({ title, description, path, index = true, absoluteT
       description,
       siteName: siteConfig.name,
       locale: "en_US",
+      images,
     },
-    twitter: { card: "summary", title: fullTitle, description },
+    twitter: { card: "summary_large_image", title: fullTitle, description, images },
   };
 }
 
 export function toolMetadata(tool: Tool): Metadata {
-  return pageMetadata({ title: tool.seoTitle, description: tool.seoDescription, path: `/${tool.slug}` });
+  return pageMetadata({ title: tool.seoTitle, description: tool.seoDescription, path: `/${tool.slug}`, image: `/${tool.slug}/opengraph-image` });
 }
 
 export function guideMetadata(tool: Tool): Metadata {
@@ -41,6 +48,7 @@ export function guideMetadata(tool: Tool): Metadata {
     title: `${tool.name} Guide — How to Use, Examples & FAQ`,
     description: `How to use the ${tool.name} on devutils.info: step-by-step instructions, worked examples, background and answers to common questions.`,
     path: `/guides/${tool.slug}`,
+    image: `/${tool.slug}/opengraph-image`,
   });
 }
 
@@ -49,6 +57,7 @@ export function categoryMetadata(category: Category): Metadata {
     title: `${category.name} — Free Online ${category.name}`,
     description: `${category.description} Free, private and processed in your browser.`,
     path: `/${category.slug}`,
+    image: `/${category.slug}/opengraph-image`,
   });
 }
 

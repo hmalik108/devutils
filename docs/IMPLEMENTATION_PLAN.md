@@ -61,7 +61,7 @@ For each tool: write the logic in `features/`, then unit tests, then the UI, the
 - [ ] Verify Google Search Console and submit the sitemap.
 - [ ] Optional: set `NEXT_PUBLIC_ANALYTICS_DOMAIN` for Plausible-compatible, cookie-less analytics, then add its host to the CSP (this happens automatically from the env var).
 - [ ] Error monitoring: the route error boundary already sends a `tool_error` event without any content. If a dedicated service such as Sentry is added, configure it to strip request bodies and breadcrumbs.
-- [ ] Add Open Graph images (e.g. `app/opengraph-image.tsx`). Metadata is already present without them.
+- [x] Open Graph images: a site default (`app/opengraph-image.tsx`) plus one per tool and category (`app/[slug]/opengraph-image.tsx`), generated at build time; guides reuse their tool's image.
 - [ ] Measure field Core Web Vitals after launch (LCP ≤ 2.5 s, INP ≤ 200 ms, CLS ≤ 0.1 at p75).
 - [ ] Write guides for `content/guides/` (PRD §10.4). Shorter versions of these topics are already on each tool page.
 
