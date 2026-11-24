@@ -137,6 +137,7 @@ export default function YamlFormatterTool() {
         </ToolPanel>
         <ToolPanel
           title="Formatted YAML"
+          expandable
           actions={
             <>
               <CopyButton value={output} disabled={!output} tool={TOOL} />

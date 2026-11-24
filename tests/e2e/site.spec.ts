@@ -122,6 +122,33 @@ test.describe("tools work", () => {
     await expect(tool(page).getByRole("alert")).toContainText("Line 1, column 9");
   });
 
+  test("output panel expands to full screen and back", async ({ page }) => {
+    await openTool(page, "json-formatter");
+    await page.getByRole("button", { name: "Sample" }).click();
+    await page.getByRole("button", { name: "Format", exact: true }).click();
+    const output = page.locator('.cm-content[aria-label="Output JSON"]');
+    await expect(output).toContainText('"id": 1024');
+    const viewport = page.viewportSize()!;
+
+    await page.getByRole("button", { name: "Full screen" }).click();
+    const panel = page.locator("[data-fullscreen]");
+    await expect(panel).toBeVisible();
+    await expect(page.getByRole("button", { name: "Exit full screen" })).toBeVisible();
+    await expect(output).toContainText('"id": 1024');
+    const box = (await panel.locator(".cm-editor").boundingBox())!;
+    expect(box.height).toBeGreaterThan(viewport.height * 0.6);
+    expect(await page.evaluate(() => document.documentElement.style.overflow)).toBe("hidden");
+
+    await page.keyboard.press("Escape");
+    await expect(panel).toHaveCount(0);
+    await expect(page.getByRole("button", { name: "Full screen" })).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.style.overflow)).toBe("");
+
+    await page.getByRole("button", { name: "Full screen" }).click();
+    await page.getByRole("button", { name: "Exit full screen" }).click();
+    await expect(panel).toHaveCount(0);
+  });
+
   test("Base64 encodes Unicode and reports invalid input", async ({ page }) => {
     await openTool(page, "base64-encoder-decoder");
     await page.getByLabel("Text to encode").fill("héllo 👋");

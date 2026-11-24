@@ -118,3 +118,9 @@
 .cm-editor { @apply h-full; }
 .cm-editor.cm-focused { outline: none; }
 .cm-scroller { font-family: var(--font-mono); font-size: 13px; line-height: 1.6; }
+
+/* Full-screen tool panels (ToolPanel expandable). Unlayered + !important so
+   they beat Tailwind utilities and the editor's inline/theme height limits. */
+[data-fullscreen] [data-fs-fill] { flex: 1 1 0%; min-height: 0 !important; max-height: none !important; }
+[data-fullscreen] .code-editor > div { height: 100%; }
+[data-fullscreen] .cm-editor { min-height: 0 !important; max-height: none !important; }

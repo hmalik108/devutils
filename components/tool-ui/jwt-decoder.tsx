@@ -94,16 +94,16 @@ export default function JwtDecoderTool() {
           )}
 
           <div className="grid gap-4 lg:grid-cols-2">
-            <ToolPanel title="Header" actions={<CopyButton value={headerJson} tool={TOOL} label="Copy header" />}>
-              <pre tabIndex={0} className="min-h-48 max-h-[560px] overflow-auto rounded-md border bg-muted/40 p-3 font-mono text-[13px]">{headerJson}</pre>
+            <ToolPanel title="Header" expandable actions={<CopyButton value={headerJson} tool={TOOL} label="Copy header" />}>
+              <pre data-fs-fill tabIndex={0} className="min-h-48 max-h-[560px] overflow-auto rounded-md border bg-muted/40 p-3 font-mono text-[13px]">{headerJson}</pre>
               {alg && (
                 <p className="text-xs text-muted-foreground">
                   Algorithm: <Badge variant="outline">{alg}</Badge>
                 </p>
               )}
             </ToolPanel>
-            <ToolPanel title="Payload (claims)" actions={<CopyButton value={payloadJson} tool={TOOL} label="Copy payload" />}>
-              <pre tabIndex={0} className="min-h-48 max-h-[560px] overflow-auto rounded-md border bg-muted/40 p-3 font-mono text-[13px]">{payloadJson}</pre>
+            <ToolPanel title="Payload (claims)" expandable actions={<CopyButton value={payloadJson} tool={TOOL} label="Copy payload" />}>
+              <pre data-fs-fill tabIndex={0} className="min-h-48 max-h-[560px] overflow-auto rounded-md border bg-muted/40 p-3 font-mono text-[13px]">{payloadJson}</pre>
             </ToolPanel>
           </div>
 

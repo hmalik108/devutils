@@ -52,6 +52,7 @@ export function TextTransform({ tool, input, setInput, output, error, inputLabel
       </ToolPanel>
       <ToolPanel
         title={outputLabel}
+        expandable
         htmlFor={`${id}-out`}
         actions={
           <>
@@ -64,7 +65,7 @@ export function TextTransform({ tool, input, setInput, output, error, inputLabel
           </>
         }
       >
-        <Textarea id={`${id}-out`} value={output} readOnly className="min-h-[400px] bg-muted/40" placeholder="Result appears here" />
+        <Textarea data-fs-fill id={`${id}-out`} value={output} readOnly className="min-h-[400px] bg-muted/40" placeholder="Result appears here" />
         {error && (
           <StatusMessage kind="error" title={error} id={`${id}-err`} />
         )}

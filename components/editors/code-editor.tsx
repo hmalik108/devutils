@@ -27,7 +27,7 @@ const LazyEditor = dynamic(() => import("./code-editor-impl"), {
  */
 export function CodeEditor(props: CodeEditorProps) {
   return (
-    <div className="relative" style={{ minHeight: props.minHeight ?? 240 }}>
+    <div className="code-editor relative" data-fs-fill style={{ minHeight: props.minHeight ?? 240 }}>
       <LazyEditor {...props} />
     </div>
   );

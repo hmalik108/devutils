@@ -92,6 +92,7 @@ export default function HtmlFormatterTool() {
         </ToolPanel>
         <ToolPanel
           title="Output"
+          expandable
           actions={
             <>
               <CopyButton value={output} disabled={!output} tool={TOOL} />

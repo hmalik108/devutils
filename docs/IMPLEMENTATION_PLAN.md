@@ -70,6 +70,7 @@ For each tool: write the logic in `features/`, then unit tests, then the UI, the
 - ✅ Tool pages focus on the tool: wider layout (`max-w-7xl`) and larger input/output areas, then a privacy note and related tools as a horizontal row of cards.
 - ✅ Long-form help (about, how-to, examples, FAQ) moved to `/guides/<slug>` and is linked from each tool page. `/guides` lists every guide, and all guides are in the sitemap.
 - ✅ Removed the homepage's "Recently added" section.
+- ✅ Output panels can expand to full screen (`ToolPanel expandable`): JSON/HTML/YAML output, tree, JSON diff, Base64/URL output, regex matches and details, UUID list, JWT header and payload. Esc or the button exits; page scroll is locked while expanded.
 
 ## Deviations from the PRD
 

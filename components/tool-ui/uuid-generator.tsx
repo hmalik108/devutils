@@ -71,6 +71,7 @@ export default function UuidGeneratorTool() {
 
       <ToolPanel
         title={uuids.length ? `Generated UUIDs (${uuids.length})` : "Generated UUIDs"}
+        expandable
         actions={
           <>
             <CopyButton value={all} disabled={!uuids.length} tool={TOOL} label="Copy all" />
@@ -81,7 +82,7 @@ export default function UuidGeneratorTool() {
         {uuids.length === 0 ? (
           <p className="rounded-md border border-dashed p-8 text-center text-sm text-muted-foreground">Choose a quantity and click Generate.</p>
         ) : (
-          <ol className="max-h-[640px] divide-y overflow-auto rounded-md border" aria-label="Generated UUIDs">
+          <ol data-fs-fill className="max-h-[640px] divide-y overflow-auto rounded-md border" aria-label="Generated UUIDs">
             {uuids.map((u, i) => (
               <li key={i} className="flex items-center gap-3 px-3 py-1.5">
                 <span className="w-10 shrink-0 text-right text-xs text-muted-foreground tabular-nums">{i + 1}</span>

@@ -124,6 +124,7 @@ export default function JsonFormatterTool() {
         </ToolPanel>
         <ToolPanel
           title="Output"
+          expandable
           actions={
             <>
               <CopyButton value={output} disabled={!output} tool={TOOL} />

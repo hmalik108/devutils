@@ -111,6 +111,7 @@ export default function JsonDiffTool() {
       {result && counts && (
         <ToolPanel
           title="Differences"
+          expandable
           actions={
             <>
               <CopyButton value={report} tool={TOOL} label="Copy report" />
@@ -126,7 +127,7 @@ export default function JsonDiffTool() {
                 {counts.added} added · {counts.removed} removed · {counts.changed} changed
                 {result.truncated && " (showing the first 5,000)"}
               </p>
-              <ul className="max-h-[480px] divide-y overflow-auto rounded-md border font-mono text-[13px]">
+              <ul data-fs-fill className="max-h-[480px] divide-y overflow-auto rounded-md border font-mono text-[13px]">
                 {result.entries.map((e, i) => {
                   const m = META[e.kind];
                   const Icon = m.icon;

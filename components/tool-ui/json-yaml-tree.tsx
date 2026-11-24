@@ -92,6 +92,7 @@ export default function JsonYamlTreeTool() {
         </ToolPanel>
         <ToolPanel
           title="Tree"
+          expandable
           actions={
             <>
               <CopyButton value={tree} disabled={!tree} tool={TOOL} />
@@ -109,6 +110,7 @@ export default function JsonYamlTreeTool() {
             </p>
           ) : null}
           <pre
+            data-fs-fill
             tabIndex={0}
             aria-label="Tree output"
             className="min-h-[520px] max-h-[820px] overflow-auto rounded-md border bg-muted/40 p-3 font-mono text-[13px] leading-relaxed"
